@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 500px;;
+    height: 500px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px gray;
+    display: flex; 
+    flex-wrap: wrap;
+    
+}
+
+.item {
+    flex-grow: 1;
+    flex-basis: 30px;
+    border: 1px solid black;
+}
