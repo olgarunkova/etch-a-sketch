@@ -6,16 +6,31 @@ const darkening = document.querySelector(".darkening");
 const colorPicker = document.querySelector(".colorPicker");
 let selectedColor = colorPicker.value;
 
-function changeGridSize() {
+function createGrid(itemsPerSide) {
     container.innerHTML = '';
-    const itemsPerSide = prompt("Enter grid size (between 2 and 99)");
     const itemSize = 600 / itemsPerSide;
     for (let i = 0; i < itemsPerSide * itemsPerSide; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
-        item.style.flexBasis = `${itemSize}px`;
+        item.style.width = `${itemSize}px`;
+        item.style.height = `${itemSize}px`;
         item.addEventListener("mouseenter", mouseEnter); 
         container.appendChild(item);
+    };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    createGrid(16);
+});
+
+function changeGridSize() {
+    container.innerHTML = '';
+    const newSize = prompt("Enter grid size (between 2 and 99)");
+    const size = parseInt(newSize, 10);
+    if ( size >= 2 && size <= 99) {
+        createGrid(size);
+    } else {
+        alert("Please enter a number between 2 and 99.");
     };
 };
 
@@ -26,7 +41,6 @@ colorPicker.addEventListener("input", (event) => {
 function mouseEnter(event) {
     event.target.style.backgroundColor = selectedColor;
 };
-
 
 eraser.addEventListener("click", () => {
     const items = document.querySelectorAll(".item");
@@ -59,7 +73,6 @@ darkening.addEventListener("click", () => {
          });
     });
 });
-
 
 function getRandomColor() {
     const hexArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
