@@ -8,14 +8,21 @@
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
-    
-    <div class="buttons">
-        <button>Color</button>
-        <button>Eraser</button>
-        <button>Rainbow</button>
-    </div>
 
+    <div class="buttons">
+        <button onclick="changeGridSize()">Change Grid Size</button>
+        <button class="darkening">Darkening Effect</button>
+        <button class="rainbow">Rainbow</button>
+        <button class="eraser">Eraser</button>
+        <button class="reset">Reset</button>
+        
+    </div>
+    
     <div class="container"></div>
+    <div class="color">
+        <label for="color">Color</label>
+        <input type="color" id="color">
+    </div>
 
 
     <script src="app.js"></script>
