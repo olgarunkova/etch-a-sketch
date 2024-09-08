@@ -3,6 +3,8 @@ const eraser = document.querySelector(".eraser");
 const rainbow = document.querySelector(".rainbow");
 const reset = document.querySelector(".reset");
 const darkening = document.querySelector(".darkening");
+const colorPicker = document.querySelector(".colorPicker");
+let selectedColor = colorPicker.value;
 
 function changeGridSize() {
     container.innerHTML = '';
@@ -17,8 +19,12 @@ function changeGridSize() {
     };
 };
 
+colorPicker.addEventListener("input", (event) => {
+    selectedColor =  event.target.value;
+})
+
 function mouseEnter(event) {
-    event.target.style.backgroundColor ="black";
+    event.target.style.backgroundColor = selectedColor;
 };
 
 
@@ -46,7 +52,7 @@ darkening.addEventListener("click", () => {
     items.forEach(item => {
         let opacity = 0;
         item.removeEventListener("mouseenter", mouseEnter);
-        item.addEventListener("click", () => item.style.backgroundColor = "black");
+        item.addEventListener("click", () => item.style.backgroundColor = selectedColor);
         item.addEventListener("click", () => {
             opacity = Math.min(opacity + 0.1, 1);
             item.style.opacity = opacity;
