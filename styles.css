@@ -9,16 +9,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #FF91A4;
 }
 
 h1 {
     font-size: 3rem;
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
+    color: #FFEBDA;
 }
 
 .container {
     width: 600px;;
     height: 600px;
+    background-color: white;
     border: 2px solid black;
     box-shadow: 10px 5px 5px gray;
     display: flex; 
@@ -43,6 +46,7 @@ h1 {
     padding: 15px;
     margin: 0 5px;
     border-radius: 10px;
+    background-color: #FFD8DB;
     cursor: pointer;
 }
 
@@ -53,13 +57,22 @@ h1 {
 input {
     border: none;
     outline: none;
-    text-align: center;
 }
 
-button .color {
+.color {
+    font-size: 1.5rem;
+    margin: 15px 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 8px;
+    color: #FFEBDA;
 }
+
+.colorPicker {
+    outline: none;
+    border: none;
+}
+
+
 
