@@ -13,7 +13,7 @@ function createGrid(itemsPerSide) {
         const item = document.createElement("div");
         item.classList.add("item");
         item.style.width = `${itemSize}px`;
-        item.style.height = `${itemSize}px`;
+       // item.style.height = `${itemSize}px`;
         item.addEventListener("mouseenter", mouseEnter); 
         container.appendChild(item);
     };
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function changeGridSize() {
-    container.innerHTML = '';
     const newSize = prompt("Enter grid size (between 2 and 99)");
     const size = parseInt(newSize, 10);
     if ( size >= 2 && size <= 99) {
