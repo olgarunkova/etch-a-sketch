@@ -12,8 +12,7 @@ function createGrid(itemsPerSide) {
     for (let i = 0; i < itemsPerSide * itemsPerSide; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
-        item.style.width = `${itemSize}px`;
-       // item.style.height = `${itemSize}px`;
+        item.style.flexBasis = `${itemSize}px`;
         item.addEventListener("mouseenter", mouseEnter); 
         container.appendChild(item);
     };
@@ -57,22 +56,29 @@ rainbow.addEventListener("click", () => {
 
 reset.addEventListener("click", () => {
     const items = document.querySelectorAll(".item");
-    items.forEach(item => item.style.backgroundColor = "white");
+    items.forEach(item => {
+        item.style.backgroundColor = "white";
+        item.style.opacity = 1; // Reset opacity if affected by darkening
+        item.removeEventListener("mouseenter", mouseEnter); 
+        item.addEventListener("mouseenter", mouseEnter);
+    })
 });
 
-darkening.addEventListener("click", () => {
+darkening.addEventListener("click", getDarker);
+function getDarker() {
     const items = document.querySelectorAll(".item");
     items.forEach(item => {
-        let opacity = 0;
-        item.removeEventListener("mouseenter", mouseEnter);
-        item.addEventListener("click", () => item.style.backgroundColor = selectedColor);
-        item.addEventListener("click", () => {
-            opacity = Math.min(opacity + 0.1, 1);
-            item.style.opacity = opacity;
-         });
+    let opacity = 0;
+    item.removeEventListener("mouseenter", mouseEnter);
+    item.addEventListener("click", () => item.style.backgroundColor = selectedColor);
+    item.addEventListener("click", () => {
+        opacity = Math.min(opacity + 0.1, 1);
+        item.style.opacity = opacity;
+        }); 
     });
-});
-
+};
+    
+         
 function getRandomColor() {
     const hexArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
     let color = "#";
